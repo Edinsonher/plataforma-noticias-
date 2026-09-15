@@ -6,4 +6,4 @@ import { Component } from '@angular/core';
   styleUrl: './favoritos.css',
   templateUrl: './favoritos.html',
 })
-export class Favoritos {}
+export class FavoritosComponent {}

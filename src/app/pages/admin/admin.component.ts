@@ -6,4 +6,4 @@ import { Component } from '@angular/core';
   styleUrl: './admin.css',
   templateUrl: './admin.html',
 })
-export class Admin {}
+export class AdminComponent {}

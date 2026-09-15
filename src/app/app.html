@@ -1,5 +1,12 @@
-<header>
-  <h1>FlashNews</h1>
-  <img src="assets/images/news.jpg" alt="Logo de flasnews">
-</header>
+<!-- El menú superior se quedará fijo en toda la web -->
+<app-header></app-header>
+
+<!-- Aquí adentro Angular cargará de forma automática la página en la que estés (home, noticias, contacto, etc.) -->
+<main>
+  <router-outlet></router-outlet>
+</main>
+
+<!-- El pie de página se quedará fijo abajo de todo -->
+<app-footer></app-footer>
+
   
