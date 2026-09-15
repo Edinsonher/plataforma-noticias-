@@ -1,0 +1,68 @@
+/* Contenedor principal del encabezado */
+.main-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 40px;
+    background-color: #ffffff;
+    border-bottom: 2px dashed #a2d2ff; /* Línea discontinua azul como tu boceto */
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* Control de dimensiones del logo para que no se vea gigante */
+.logo-img {
+    height: 60px;
+    width: auto;
+    display: block;
+}
+
+/* Menú de navegación horizontal */
+.nav-menu ul {
+    display: flex;
+    list-style: none;
+    gap: 30px;
+    margin: 0;
+    padding: 0;
+}
+
+.nav-menu a {
+    text-decoration: none;
+    color: #333333;
+    font-weight: 600;
+    font-size: 16px;
+    transition: color 0.2s ease;
+}
+
+/* Efecto visual al pasar el mouse por encima */
+.nav-menu a:hover {
+    color: #ff9f1c; /* Cambia a naranja suave al pasar el cursor */
+}
+
+/* Caja del buscador */
+.search-box {
+    display: flex;
+    align-items: center;
+    border: 1px solid #ccc;
+    border-radius: 20px; /* Bordes redondeados elegantes */
+    padding: 5px 15px;
+    background-color: #f9f9f9;
+}
+
+.search-box input {
+    border: none;
+    background: none;
+    outline: none;
+    padding: 5px;
+    font-size: 14px;
+    width: 180px;
+}
+
+.search-box button {
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+    padding: 0;
+    margin-left: 5px;
+}
+
