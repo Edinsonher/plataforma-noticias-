@@ -10,10 +10,17 @@
 }
 
 /* Control de dimensiones del logo para que no se vea gigante */
-.logo-img {
+.logo img {
     height: 60px;
     width: auto;
     display: block;
+}
+/* Se modifica el estilo del título */
+
+#title-1 {
+    color: red;
+    font-size: 24px;
+    font-weight: 700;
 }
 
 /* Menú de navegación horizontal */

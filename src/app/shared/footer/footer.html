@@ -1,3 +1,42 @@
-<footer class="main footer">
-  <p>&copy; 2026 Flash News. Todos los derechos reservados.</p>
+<footer class="main-footer">
+    @if (router.url === '/' || router.url === '/home') {
+        <div class="footer-columns">
+            <div class="footer-col">
+                <h3>Categorías</h3>
+                <ul>
+                    <li><a routerLink="/noticias">Nacional</a></li>
+                    <li><a routerLink="/noticias">Tecnología</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-col">
+                <h3>Políticas</h3>
+                <ul>
+                    <li><a href="#">Privacidad</a></li>
+                    <li><a href="#">Términos</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-col">
+                <h3>Síguenos</h3>
+                <ul>
+                    <li><a href="https://twitter.com" target="_blank">Twitter / X</a></li>
+                    <li><a href="https://facebook.com" target="_blank">Facebook</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-col">
+                <h3>Contacto</h3>
+                <ul>
+                    <li><a href="mailto:correo@ejemplo.com">Correo</a></li>
+                    <li><a href="tel:+123456789">Teléfono</a></li>
+                </ul>
+            </div>
+        </div>
+    }
+
+    <div class="footer-bottom">
+        <p>&copy; 2026 Flash News. Todos los derechos reservados.</p>
+    </div>
 </footer>
+

@@ -6,7 +6,7 @@ import { RouterLink } from '@angular/router'; // 1. Agregamos la importación
   standalone: true,
   imports: [RouterLink], // 2. Lo declaramos aquí para que funcione en el HTML
   templateUrl: './header.html',
-  styleUrls: ['./header.css']
+  styleUrl: './header.css'
 
 })
 export class HeaderComponent {}
