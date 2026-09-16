@@ -4,10 +4,12 @@ import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-noticias',
+  standalone: true,
   imports: [CommonModule],
-  styleUrl: './noticias.css',
-  templateUrl: './noticias.html'
+  styleUrl: './noticias.css',    
+  templateUrl: './noticias.html'  
 })
+
 export class NoticiasComponent implements OnInit {
   // Arreglo donde se guardarán las noticias cargadas del JSON
   listaNoticias: any[] = [];
