@@ -1,1 +1,57 @@
+<main class="news-section-container">
+  <!-- Encabezado de la Sección -->
+  <header class="section-header">
+    <h2>Sección Tecnología</h2>
+    <p>Explora las últimas noticias y tendencias tecnológicas.</p>
+  </header>
+  <hr class="divider">
 
+  <!-- Herramientas: Buscador y Filtros -->
+  <section class="search-filter-controls">
+    <div class="internal-search">
+      <label for="section-search">Buscar noticia en esta sección</label>
+      <div class="search-input-wrapper">
+        <input type="text" id="section-search" placeholder="Escribe para buscar...">
+      </div>
+    </div>
+
+    <div class="filter-tags">
+      <span>Filtros:</span>
+      <ul class="tags-list">
+        <li><button type="button" class="tag-btn active">Todos</button></li>
+        <li><button type="button" class="tag-btn">IA</button></li>
+        <li><button type="button" class="tag-btn">Gadgets</button></li>
+        <li><button type="button" class="tag-btn">Software</button></li>
+        <li><button type="button" class="tag-btn">Ciberseguridad</button></li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- Rejilla de Noticias de la Sección Dinámica -->
+  <section class="news-grid">
+    @for (noticia of listaNoticias; track noticia.id) {
+      <article class="news-card">
+        <img [src]="noticia.imagen" [alt]="noticia.titulo" class="card-img">
+        <div class="card-content">
+          <h4>{{ noticia.titulo }}</h4>
+          <p>{{ noticia.descripcion }}</p>
+        </div>
+      </article>
+    } @empty {
+      <p>Cargando noticias de tecnología...</p>
+    }
+  </section>
+  <hr class="divider">
+
+  <!-- Paginación Inferior -->
+  <nav class="pagination-container" aria-label="Paginación de noticias">
+    <button type="button" class="pag-btn prev">Anterior</button>
+    <ul class="page-numbers">
+      <li><button type="button" class="page-num active">1</button></li>
+      <li><button type="button" class="page-num">2</button></li>
+      <li><button type="button" class="page-num">3</button></li>
+      <li><button type="button" class="page-num">4</button></li>
+    </ul>
+    <button type="button" class="pag-btn next">Siguiente</button>
+  </nav>
+</main>

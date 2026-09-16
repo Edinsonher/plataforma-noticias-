@@ -1,0 +1,45 @@
+[
+  {
+    "id": 1,
+    "titulo": "Ciberseguridad Global",
+    "descripcion": "Breve descripción o entradilla sobre los ataques informáticos actuales.",
+    "imagen": "assets/images/ciberseguridad.jpg",
+    "categoria": "Ciberseguridad"
+  },
+  {
+    "id": 2,
+    "titulo": "Policía Nacional",
+    "descripcion": "Nuevas medidas tecnológicas implementadas para la seguridad ciudadana.",
+    "imagen": "assets/images/policia nacional.jpg",
+    "categoria": "Nacional"
+  },
+  {
+    "id": 3,
+    "titulo": "Desarrollo de Software",
+    "descripcion": "Las tendencias de programación que dominarán el mercado informático.",
+    "imagen": "assets/images/desarrollo de software.jpg",
+    "categoria": "Software"
+  },
+  {
+    "id": 4,
+    "titulo": "Deportes y Tecnología",
+    "descripcion": "Cómo el análisis de datos está cambiando el rendimiento de los atletas.",
+    "imagen": "assets/images/deportes.jpg",
+    "categoria": "General"
+  },
+  {
+    "id": 5,
+    "titulo": "Gadgets Tecnológicos",
+    "descripcion": "Análisis a fondo de los nuevos dispositivos lanzados esta semana.",
+    "imagen": "assets/images/gadgets tecnológicos.jpg",
+    "categoria": "Gadgets"
+  },
+  {
+    "id": 6,
+    "titulo": "Inteligencia Artificial",
+    "descripcion": "El impacto de los nuevos modelos de lenguaje en el trabajo diario.",
+    "imagen": "assets/images/inteligencia artificial.jpg",
+    "categoria": "IA"
+  }
+]
+

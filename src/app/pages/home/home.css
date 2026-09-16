@@ -1,0 +1,144 @@
+
+/* Contenedor general de la página de Inicio */
+.home-container {
+    padding: 20px 40px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #ffffff;
+}
+
+/* ==========================================
+   1. ESTILOS DEL BANNER DESTACADO (NARANJA)
+   ========================================== */
+.featured-banner {
+    background-color: #ff9f1c; /* El color naranja exacto de tu mockup */
+    border-radius: 8px;
+    padding: 40px;
+    color: #ffffff;
+    margin-bottom: 40px;
+}
+
+.banner-content h2 {
+    font-size: 28px;
+    margin-top: 0;
+    margin-bottom: 15px;
+    font-weight: 700;
+    line-height: 1.3;
+}
+
+.banner-content p {
+    font-size: 16px;
+    line-height: 1.6;
+    margin-bottom: 25px;
+    color: #fff3e0;
+}
+
+.btn-read-more {
+    background-color: #ffffff;
+    color: #ff9f1c;
+    border: none;
+    padding: 12px 24px;
+    font-size: 15px;
+    font-weight: 600;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.2s ease, transform 0.1s ease;
+}
+
+.btn-read-more:hover {
+    background-color: #f8f9fa;
+    transform: scale(1.02);
+}
+
+/* ==========================================
+   2. REJILLA DE ÚLTIMAS NOTICIAS (3 COLUMNAS)
+   ========================================== */
+.latest-news h3 {
+    font-size: 22px;
+    color: #111111;
+    text-transform: uppercase;
+    margin-bottom: 25px;
+    letter-spacing: 0.5px;
+}
+
+/* Distribución inteligente en 3 columnas para PC */
+.news-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 30px;
+    margin-bottom: 40px;
+}
+
+/* Estructura limpia de cada tarjeta */
+.news-card {
+    background-color: #ffffff;
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.news-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+}
+
+/* Formateo de imágenes para que se mantengan proporcionales */
+.card-img {
+    width: 100%;
+    height: 200px; /* Altura fija para simetría visual */
+    object-fit: cover; /* Evita que las fotos se estiren o deformen */
+    border-bottom: 1px solid #e0e0e0;
+}
+
+/* Espaciado del bloque de texto interno */
+.card-content {
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+}
+
+.card-content h4 {
+    font-size: 18px;
+    color: #222222;
+    margin-top: 0;
+    margin-bottom: 10px;
+    font-weight: 600;
+}
+
+.card-content p {
+    font-size: 14px;
+    color: #666666;
+    line-height: 1.5;
+    margin: 0;
+}
+
+/* ==========================================
+   DISEÑO RESPONSIVO (Móviles y Tablets)
+   ========================================== */
+@media (max-width: 1024px) {
+    .news-grid {
+        grid-template-columns: repeat(2, 1fr); /* Baja a 2 columnas en pantallas medianas o tablets */
+        gap: 20px;
+    }
+}
+
+@media (max-width: 650px) {
+    .home-container {
+        padding: 15px 20px;
+    }
+    
+    .news-grid {
+        grid-template-columns: 1fr; /* 1 sola columna en smartphones */
+    }
+
+    .featured-banner {
+        padding: 25px 20px;
+    }
+
+    .banner-content h2 {
+        font-size: 22px;
+    }
+}

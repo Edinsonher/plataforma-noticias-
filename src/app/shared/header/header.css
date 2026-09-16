@@ -5,7 +5,7 @@
     align-items: center;
     padding: 10px 40px;
     background-color: #ffffff;
-    border-bottom: 2px dashed #a2d2ff; /* Línea discontinua azul como tu boceto */
+    border-bottom: 1px solid gray; /* Línea sutil abajo */
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
@@ -15,8 +15,8 @@
     width: auto;
     display: block;
 }
-/* Se modifica el estilo del título */
 
+/* Se modifica el estilo del título */
 #title-1 {
     color: red;
     font-size: 24px;
@@ -72,4 +72,32 @@
     padding: 0;
     margin-left: 5px;
 }
+
+/* ==========================================
+   DISEÑO RESPONSIVO (Para pantallas móviles)
+   ========================================== */
+@media (max-width: 768px) {
+    /* Hace que el encabezado se distribuya en una columna vertical */
+    .main-header {
+        flex-direction: column;
+        gap: 15px;
+        padding: 15px 20px;
+        text-align: center;
+    }
+
+    /* Permite que los enlaces del menú bajen y se acomoden en filas si no caben */
+    .nav-menu ul {
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 15px;
+    }
+
+    /* Hace que la barra de búsqueda abarque un ancho más cómodo en móviles */
+    .search-box {
+        width: 100%;
+        max-width: 300px;
+        justify-content: space-between;
+    }
+}
+
 
