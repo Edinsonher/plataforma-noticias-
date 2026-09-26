@@ -1,16 +1,29 @@
+<!-- Politicas: contenido seleccionado por el parametro tipo de la ruta. -->
 <main class="policy-page">
   <a routerLink="/home" class="back-link">&lt;- Volver al inicio</a>
   @if (tipo === 'terminos') {
     <p class="eyebrow">Flash News</p>
     <h1>Terminos de uso</h1>
-    <p>Este portal ofrece contenido informativo para consulta personal. El usuario se compromete a utilizarlo de forma responsable y a respetar la autoria de los contenidos publicados.</p>
+    <p>
+      Este portal ofrece contenido informativo para consulta personal. El usuario se compromete a
+      utilizarlo de forma responsable y a respetar la autoria de los contenidos publicados.
+    </p>
     <h2>Uso del contenido</h2>
-    <p>Las noticias pueden compartirse con fines informativos, conservando la referencia a Flash News. El contenido puede actualizarse para mantener su vigencia.</p>
+    <p>
+      Las noticias pueden compartirse con fines informativos, conservando la referencia a Flash
+      News. El contenido puede actualizarse para mantener su vigencia.
+    </p>
   } @else {
     <p class="eyebrow">Flash News</p>
     <h1>Politica de privacidad</h1>
-    <p>Flash News utiliza los datos que el usuario escribe en el formulario de contacto solo para atender su solicitud. Esta version academica no envia datos a servidores externos.</p>
+    <p>
+      Flash News utiliza los datos que el usuario escribe en el formulario de contacto solo para
+      atender su solicitud. Esta version academica no envia datos a servidores externos.
+    </p>
     <h2>Datos locales</h2>
-    <p>Los favoritos y las publicaciones creadas desde Administracion se guardan unicamente en el almacenamiento local del navegador.</p>
+    <p>
+      Los favoritos y las publicaciones creadas desde Administracion se guardan unicamente en el
+      almacenamiento local del navegador.
+    </p>
   }
 </main>

@@ -1,9 +1,66 @@
 [
-  {"id":1,"categoria":"Ciberseguridad","titulo":"La ciberseguridad en el entorno digital","imagen":"assets/images/ciberseguridad.jpg","alt":"Imagen sobre ciberseguridad","resumen":"Las amenazas digitales evolucionan y hacen indispensable proteger datos, cuentas y organizaciones.","contenido":"La ciberseguridad es hoy un pilar de la continuidad operativa. La educacion digital, la autenticacion multifactor y la actualizacion constante reducen los riesgos frente al phishing y al ransomware."},
-  {"id":2,"categoria":"Seguridad Nacional","titulo":"La policia nacional fortalece la seguridad ciudadana","imagen":"assets/images/policia%20nacional.jpg","alt":"Imagen de seguridad ciudadana","resumen":"La prevencion, la presencia territorial y el dialogo comunitario son claves para construir confianza.","contenido":"Las estrategias modernas de seguridad combinan presencia institucional, prevencion y educacion ciudadana. La colaboracion con las comunidades permite atender las causas de los conflictos antes de que escalen."},
-  {"id":3,"categoria":"Desarrollo de Software","titulo":"El desarrollo de software impulsa la transformacion digital","imagen":"assets/images/desarrollo%20de%20software.jpg","alt":"Imagen sobre desarrollo de software","resumen":"La ingenieria de software integra nube, automatizacion e inteligencia artificial para resolver nuevos desafios.","contenido":"Los equipos de desarrollo construyen sistemas escalables y adaptables. Las practicas agiles, el analisis de datos y la automatizacion permiten crear productos digitales con mayor impacto."},
-  {"id":4,"categoria":"Tecnologia","titulo":"Los gadgets tecnologicos cambian la vida cotidiana","imagen":"assets/images/gadgets%20tecnol%C3%B3gicos.jpg","alt":"Imagen de gadgets tecnologicos","resumen":"Los dispositivos inteligentes conectan productividad, bienestar y entretenimiento en un mismo ecosistema.","contenido":"Los nuevos dispositivos son cada vez mas utiles para cuidar la salud, organizar el trabajo y administrar el hogar. El reto de la industria es crecer con eficiencia y responsabilidad ambiental."},
-  {"id":5,"categoria":"Inteligencia Artificial","titulo":"La inteligencia artificial transforma la educacion","imagen":"assets/images/inteligencia%20artificial.jpg","alt":"Imagen sobre inteligencia artificial","resumen":"La IA permite personalizar el aprendizaje y acompanar a estudiantes con diferentes ritmos y necesidades.","contenido":"Las plataformas adaptativas analizan el progreso de cada estudiante y ajustan sus contenidos. El docente conserva un papel esencial como mentor, guia critico y facilitador del desarrollo humano."},
-  {"id":6,"categoria":"Deportes","titulo":"El deporte fortalece la salud y la vida en comunidad","imagen":"assets/images/deportes.jpg","alt":"Imagen sobre deportes","resumen":"La actividad fisica aporta bienestar emocional, previene enfermedades y crea espacios de encuentro.","contenido":"Los espacios deportivos son escenarios de bienestar integral. La practica constante mejora la salud y fortalece los vinculos sociales mediante la cooperacion y la competencia sana."},
-  {"id":7,"categoria":"Destacada","titulo":"Que viene para el presupuesto nacional de 2027","imagen":"assets/images/news.jpg","alt":"Imagen de la noticia destacada","resumen":"Analizamos las implicaciones del debate presupuestal para los sectores de salud, educacion e inversion publica.","contenido":"El debate presupuestal concentra la atencion del pais por sus efectos en la inversion publica y en la sostenibilidad fiscal. Las decisiones de las comisiones economicas definiran prioridades para el siguiente periodo."}
+  {
+    "id": 1,
+    "categoria": "Ciberseguridad",
+    "titulo": "La ciberseguridad en el entorno digital",
+    "imagen": "assets/images/ciberseguridad.jpg",
+    "alt": "Imagen sobre ciberseguridad",
+    "resumen": "Las amenazas digitales evolucionan y hacen indispensable proteger datos, cuentas y organizaciones.",
+    "contenido": "La ciberseguridad es hoy un pilar de la continuidad operativa. La educacion digital, la autenticacion multifactor y la actualizacion constante reducen los riesgos frente al phishing y al ransomware."
+  },
+
+  {
+    "id": 2,
+    "categoria": "Seguridad Nacional",
+    "titulo": "La policia nacional fortalece la seguridad ciudadana",
+    "imagen": "assets/images/policia%20nacional.jpg",
+    "alt": "Imagen de seguridad ciudadana",
+    "resumen": "La prevencion, la presencia territorial y el dialogo comunitario son claves para construir confianza.",
+    "contenido": "Las estrategias modernas de seguridad combinan presencia institucional, prevencion y educacion ciudadana. La colaboracion con las comunidades permite atender las causas de los conflictos antes de que escalen."
+  },
+  {
+    "id": 3,
+    "categoria": "Desarrollo de Software",
+    "titulo": "El desarrollo de software impulsa la transformacion digital",
+    "imagen": "assets/images/desarrollo%20de%20software.jpg",
+    "alt": "Imagen sobre desarrollo de software",
+    "resumen": "La ingenieria de software integra nube, automatizacion e inteligencia artificial para resolver nuevos desafios.",
+    "contenido": "Los equipos de desarrollo construyen sistemas escalables y adaptables. Las practicas agiles, el analisis de datos y la automatizacion permiten crear productos digitales con mayor impacto."
+  },
+  {
+    "id": 4,
+    "categoria": "Tecnologia",
+    "titulo": "Los gadgets tecnologicos cambian la vida cotidiana",
+    "imagen": "assets/images/gadgets%20tecnol%C3%B3gicos.jpg",
+    "alt": "Imagen de gadgets tecnologicos",
+    "resumen": "Los dispositivos inteligentes conectan productividad, bienestar y entretenimiento en un mismo ecosistema.",
+    "contenido": "Los nuevos dispositivos son cada vez mas utiles para cuidar la salud, organizar el trabajo y administrar el hogar. El reto de la industria es crecer con eficiencia y responsabilidad ambiental."
+  },
+  {
+    "id": 5,
+    "categoria": "Inteligencia Artificial",
+    "titulo": "La inteligencia artificial transforma la educacion",
+    "imagen": "assets/images/inteligencia%20artificial.jpg",
+    "alt": "Imagen sobre inteligencia artificial",
+    "resumen": "La IA permite personalizar el aprendizaje y acompanar a estudiantes con diferentes ritmos y necesidades.",
+    "contenido": "Las plataformas adaptativas analizan el progreso de cada estudiante y ajustan sus contenidos. El docente conserva un papel esencial como mentor, guia critico y facilitador del desarrollo humano."
+  },
+  {
+    "id": 6,
+    "categoria": "Deportes",
+    "titulo": "El deporte fortalece la salud y la vida en comunidad",
+    "imagen": "assets/images/deportes.jpg",
+    "alt": "Imagen sobre deportes",
+    "resumen": "La actividad fisica aporta bienestar emocional, previene enfermedades y crea espacios de encuentro.",
+    "contenido": "Los espacios deportivos son escenarios de bienestar integral. La practica constante mejora la salud y fortalece los vinculos sociales mediante la cooperacion y la competencia sana."
+  },
+  {
+    "id": 7,
+    "categoria": "Destacada",
+    "titulo": "Que viene para el presupuesto nacional de 2027",
+    "imagen": "assets/images/news.jpg",
+    "alt": "Imagen de la noticia destacada",
+    "resumen": "Analizamos las implicaciones del debate presupuestal para los sectores de salud, educacion e inversion publica.",
+    "contenido": "El debate presupuestal concentra la atencion del pais por sus efectos en la inversion publica y en la sostenibilidad fiscal. Las decisiones de las comisiones economicas definiran prioridades para el siguiente periodo."
+  }
 ]

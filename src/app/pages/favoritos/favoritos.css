@@ -1,1 +1,64 @@
-.favorites-header{border-bottom:1px solid var(--ink);margin-bottom:30px;padding-bottom:20px}.favorites-header h1{font-size:clamp(2rem,4vw,3.4rem)}.news-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}.news-card{background:#fff;border:1px solid var(--line);display:flex;flex-direction:column}.news-card>img{width:100%;height:170px;object-fit:cover}.card-content h2{font-size:1.3rem}.card-content p{color:var(--muted);flex:1}.badge{align-self:flex-start;background:var(--mint);padding:5px 9px;font-size:.72rem;font-weight:700}.card-actions{display:flex;justify-content:space-between;align-items:center;margin-top:15px}.btn-remove-fav{border:0;background:none;color:var(--accent);font-weight:700}.empty-favorites .btn-primary{margin-top:12px}@media(max-width:800px){.news-grid{grid-template-columns:repeat(2,1fr)}}@media(max-width:520px){.news-grid{grid-template-columns:1fr}}
+/* Favoritos: tarjetas, estado vacio y adaptacion de la seleccion personal. */
+.favorites-header {
+  border-bottom: 1px solid var(--ink);
+  margin-bottom: 30px;
+  padding-bottom: 20px;
+}
+.favorites-header h1 {
+  font-size: clamp(2rem, 4vw, 3.4rem);
+}
+.news-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 22px;
+}
+.news-card {
+  background: #fff;
+  border: 1px solid var(--line);
+  display: flex;
+  flex-direction: column;
+}
+.news-card > img {
+  width: 100%;
+  height: 170px;
+  object-fit: cover;
+}
+.card-content h2 {
+  font-size: 1.3rem;
+}
+.card-content p {
+  color: var(--muted);
+  flex: 1;
+}
+.badge {
+  align-self: flex-start;
+  background: var(--mint);
+  padding: 5px 9px;
+  font-size: 0.72rem;
+  font-weight: 700;
+}
+.card-actions {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 15px;
+}
+.btn-remove-fav {
+  border: 0;
+  background: none;
+  color: var(--accent);
+  font-weight: 700;
+}
+.empty-favorites .btn-primary {
+  margin-top: 12px;
+}
+@media (max-width: 800px) {
+  .news-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+@media (max-width: 520px) {
+  .news-grid {
+    grid-template-columns: 1fr;
+  }
+}

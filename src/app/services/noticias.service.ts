@@ -2,18 +2,19 @@ import { Injectable } from '@angular/core';
 import { Noticia } from '../models/noticia.model';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
+/** Centraliza carga, persistencia, favoritos y operaciones CRUD de noticias. */
 export class NoticiasService {
   private readonly JSON_URL = 'data/noticias.json';
   private readonly STORAGE_KEY = 'noticias_app_data_v2';
   private readonly FAVORITES_KEY = 'favoritos_app';
 
-  constructor() { }
+  constructor() {}
 
   /**
    * Obtiene la lista de noticias.
-   * Primero revisa el localStorage (para mantener el CRUD). 
+   * Primero revisa el localStorage (para mantener el CRUD).
    * Si no hay, carga desde el JSON y lo guarda en localStorage.
    */
   async getNoticias(): Promise<Noticia[]> {
@@ -50,6 +51,7 @@ export class NoticiasService {
     return data ? (JSON.parse(data) as Noticia[]) : [];
   }
 
+  /** Agrega o quita una noticia y devuelve su nuevo estado. */
   toggleFavorite(noticia: Noticia): boolean {
     const favorites = this.getFavorites();
     const exists = favorites.some((favorite) => favorite.id === noticia.id);
@@ -60,6 +62,7 @@ export class NoticiasService {
     return !exists;
   }
 
+  /** Crea una noticia con el siguiente identificador disponible. */
   createNoticia(noticia: Omit<Noticia, 'id'>): Noticia {
     const noticias = this.getNoticiasFromStorage();
     const created: Noticia = { ...noticia, id: this.getNextId(noticias) };
@@ -67,11 +70,12 @@ export class NoticiasService {
     return created;
   }
 
+  /** Elimina la noticia y evita que quede una referencia en favoritos. */
   deleteNoticia(id: number): void {
     this.saveToLocal(this.getNoticiasFromStorage().filter((noticia) => noticia.id !== id));
     localStorage.setItem(
       this.FAVORITES_KEY,
-      JSON.stringify(this.getFavorites().filter((noticia) => noticia.id !== id))
+      JSON.stringify(this.getFavorites().filter((noticia) => noticia.id !== id)),
     );
   }
 

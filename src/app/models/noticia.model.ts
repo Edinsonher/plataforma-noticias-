@@ -1,3 +1,4 @@
+/** Contrato de una noticia usada por el catalogo, detalle, favoritos y CRUD. */
 export interface Noticia {
   id: number;
   categoria: string;

@@ -1,6 +1,7 @@
+// Comprueba el detalle con ActivatedRoute y servicio de noticias simulados.
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { ActivatedRoute, provideRouter } from '@angular/router';
-import {DetalleNoticiaComponent } from './detalle-noticia.component';
+import { DetalleNoticiaComponent } from './detalle-noticia.component';
 import { NoticiasService } from '../../services/noticias.service';
 
 describe('DetalleNoticiaComponent', () => {
@@ -16,11 +17,31 @@ describe('DetalleNoticiaComponent', () => {
         {
           provide: NoticiasService,
           useValue: {
-            getStoredNoticias: () => [{ id: 1, categoria: 'Tecnologia', titulo: 'Prueba', imagen: '', alt: '', resumen: 'Resumen', contenido: 'Contenido' }],
-            getNoticias: async () => [{ id: 1, categoria: 'Tecnologia', titulo: 'Prueba', imagen: '', alt: '', resumen: 'Resumen', contenido: 'Contenido' }],
-            getFavorites: () => []
-          }
-        }
+            getStoredNoticias: () => [
+              {
+                id: 1,
+                categoria: 'Tecnologia',
+                titulo: 'Prueba',
+                imagen: '',
+                alt: '',
+                resumen: 'Resumen',
+                contenido: 'Contenido',
+              },
+            ],
+            getNoticias: async () => [
+              {
+                id: 1,
+                categoria: 'Tecnologia',
+                titulo: 'Prueba',
+                imagen: '',
+                alt: '',
+                resumen: 'Resumen',
+                contenido: 'Contenido',
+              },
+            ],
+            getFavorites: () => [],
+          },
+        },
       ],
     }).compileComponents();
 

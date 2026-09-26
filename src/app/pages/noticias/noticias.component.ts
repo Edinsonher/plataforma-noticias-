@@ -10,7 +10,7 @@ import { NoticiasService } from '../../services/noticias.service';
   standalone: true,
   imports: [CommonModule, FormsModule],
   styleUrl: './noticias.css',
-  templateUrl: './noticias.html'
+  templateUrl: './noticias.html',
 })
 export class NoticiasComponent implements OnInit {
   listaNoticias: Noticia[] = [];
@@ -21,9 +21,14 @@ export class NoticiasComponent implements OnInit {
   readonly noticiasPorPagina = 6;
   categorias: string[] = [];
 
-  constructor(private readonly noticiasService: NoticiasService, private readonly router: Router, private readonly route: ActivatedRoute) {}
+  constructor(
+    private readonly noticiasService: NoticiasService,
+    private readonly router: Router,
+    private readonly route: ActivatedRoute,
+  ) {}
 
   async ngOnInit(): Promise<void> {
+    // El buscador global envia el termino como query param; la suscripcion permite reaccionar sin recrear la vista.
     this.route.queryParamMap.subscribe((params) => {
       this.busqueda = params.get('q') || '';
       this.aplicarFiltros();
@@ -31,7 +36,7 @@ export class NoticiasComponent implements OnInit {
     const favoritosIds = new Set(this.noticiasService.getFavorites().map((noticia) => noticia.id));
     this.listaNoticias = (await this.noticiasService.getNoticias()).map((noticia) => ({
       ...noticia,
-      isFavorite: favoritosIds.has(noticia.id)
+      isFavorite: favoritosIds.has(noticia.id),
     }));
     this.categorias = [...new Set(this.listaNoticias.map((noticia) => noticia.categoria))];
     this.aplicarFiltros();
@@ -46,22 +51,26 @@ export class NoticiasComponent implements OnInit {
     return this.noticiasFiltradas.slice(inicio, inicio + this.noticiasPorPagina);
   }
 
+  /** Cambia categoria y reinicia la paginacion para evitar paginas vacias. */
   seleccionarCategoria(categoria: string): void {
     this.categoriaActiva = categoria;
     this.paginaActual = 1;
     this.aplicarFiltros();
   }
 
+  /** Filtra por categoria y por coincidencia de texto en titulo o resumen. */
   aplicarFiltros(): void {
     const termino = this.busqueda.trim().toLowerCase();
     this.noticiasFiltradas = this.listaNoticias.filter((noticia) => {
-      const coincideCategoria = this.categoriaActiva === 'Todas' || noticia.categoria === this.categoriaActiva;
+      const coincideCategoria =
+        this.categoriaActiva === 'Todas' || noticia.categoria === this.categoriaActiva;
       const coincideTexto = `${noticia.titulo} ${noticia.resumen}`.toLowerCase().includes(termino);
       return coincideCategoria && coincideTexto;
     });
     this.paginaActual = Math.min(this.paginaActual, this.totalPaginas);
   }
 
+  /** Mantiene el indice de pagina dentro de los limites disponibles. */
   cambiarPagina(pagina: number): void {
     this.paginaActual = Math.min(Math.max(pagina, 1), this.totalPaginas);
   }
@@ -81,7 +90,7 @@ export class NoticiasComponent implements OnInit {
       'Desarrollo de Software': 'card-purple',
       Tecnologia: 'card-blue',
       'Inteligencia Artificial': 'card-orange',
-      Deportes: 'card-green'
+      Deportes: 'card-green',
     };
     return colors[categoria] || 'card-default';
   }

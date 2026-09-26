@@ -9,15 +9,21 @@ import { NoticiasService } from '../../services/noticias.service';
   standalone: true,
   imports: [CommonModule, RouterLink],
   styleUrl: './favoritos.css',
-  templateUrl: './favoritos.html'
+  templateUrl: './favoritos.html',
 })
 export class FavoritosComponent implements OnInit {
   misFavoritos: Noticia[] = [];
 
-  constructor(private readonly noticiasService: NoticiasService, private readonly router: Router) {}
+  constructor(
+    private readonly noticiasService: NoticiasService,
+    private readonly router: Router,
+  ) {}
 
-  ngOnInit(): void { this.cargarFavoritos(); }
+  ngOnInit(): void {
+    this.cargarFavoritos();
+  }
 
+  /** Quita una noticia del almacenamiento y refresca la lista visible. */
   eliminarDeFavoritos(id: number): void {
     const favorito = this.misFavoritos.find((item) => item.id === id);
     if (favorito) {
@@ -26,7 +32,12 @@ export class FavoritosComponent implements OnInit {
     }
   }
 
-  verDetalle(id: number): void { this.router.navigate(['/detalle', id]); }
+  /** Abre la vista de lectura completa. */
+  verDetalle(id: number): void {
+    this.router.navigate(['/detalle', id]);
+  }
 
-  private cargarFavoritos(): void { this.misFavoritos = this.noticiasService.getFavorites(); }
+  private cargarFavoritos(): void {
+    this.misFavoritos = this.noticiasService.getFavorites();
+  }
 }

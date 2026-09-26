@@ -1,3 +1,4 @@
+<!-- Catalogo: filtros, resultados dinamicos y paginacion. -->
 <main class="news-section-container">
   <header class="section-header">
     <p class="eyebrow">Edicion digital</p>
@@ -7,12 +8,30 @@
 
   <section class="search-filter-controls" aria-label="Filtros de noticias">
     <label for="section-search">Buscar noticia</label>
-    <input id="section-search" type="search" [(ngModel)]="busqueda" (ngModelChange)="aplicarFiltros()" placeholder="Titulo o palabra clave">
+    <input
+      id="section-search"
+      type="search"
+      [(ngModel)]="busqueda"
+      (ngModelChange)="aplicarFiltros()"
+      placeholder="Titulo o palabra clave"
+    />
     <div class="filter-tags">
       <span>Filtrar por categoria</span>
-      <button type="button" [class.active]="categoriaActiva === 'Todas'" (click)="seleccionarCategoria('Todas')">Todas</button>
+      <button
+        type="button"
+        [class.active]="categoriaActiva === 'Todas'"
+        (click)="seleccionarCategoria('Todas')"
+      >
+        Todas
+      </button>
       @for (categoria of categorias; track categoria) {
-        <button type="button" [class.active]="categoriaActiva === categoria" (click)="seleccionarCategoria(categoria)">{{ categoria }}</button>
+        <button
+          type="button"
+          [class.active]="categoriaActiva === categoria"
+          (click)="seleccionarCategoria(categoria)"
+        >
+          {{ categoria }}
+        </button>
       }
     </div>
   </section>
@@ -20,14 +39,25 @@
   <section class="news-grid" aria-live="polite">
     @for (noticia of noticiasVisibles; track noticia.id) {
       <article class="news-card" [ngClass]="getCardColorClass(noticia.categoria)">
-        <div class="card-image-wrap"><img [src]="noticia.imagen" [alt]="noticia.alt || noticia.titulo" loading="lazy"></div>
+        <div class="card-image-wrap">
+          <img [src]="noticia.imagen" [alt]="noticia.alt || noticia.titulo" loading="lazy" />
+        </div>
         <div class="card-content">
           <span class="card-category">{{ noticia.categoria }}</span>
           <h3>{{ noticia.titulo }}</h3>
           <p>{{ noticia.resumen }}</p>
           <div class="card-actions">
-            <button type="button" class="btn-link" (click)="verDetalle(noticia.id)">Leer noticia</button>
-            <button type="button" class="btn-fav" [attr.aria-label]="noticia.isFavorite ? 'Quitar de favoritos' : 'Agregar a favoritos'" (click)="toggleFavorite(noticia)"><span [class.starred]="noticia.isFavorite">★</span></button>
+            <button type="button" class="btn-link" (click)="verDetalle(noticia.id)">
+              Leer noticia
+            </button>
+            <button
+              type="button"
+              class="btn-fav"
+              [attr.aria-label]="noticia.isFavorite ? 'Quitar de favoritos' : 'Agregar a favoritos'"
+              (click)="toggleFavorite(noticia)"
+            >
+              <span [class.starred]="noticia.isFavorite">★</span>
+            </button>
           </div>
         </div>
       </article>
@@ -37,10 +67,20 @@
   </section>
 
   <nav class="pagination-container" aria-label="Paginacion">
-    <button type="button" (click)="cambiarPagina(paginaActual - 1)" [disabled]="paginaActual === 1">Anterior</button>
+    <button type="button" (click)="cambiarPagina(paginaActual - 1)" [disabled]="paginaActual === 1">
+      Anterior
+    </button>
     @for (pagina of [].constructor(totalPaginas); let i = $index; track i) {
-      <button type="button" [class.active]="paginaActual === i + 1" (click)="cambiarPagina(i + 1)">{{ i + 1 }}</button>
+      <button type="button" [class.active]="paginaActual === i + 1" (click)="cambiarPagina(i + 1)">
+        {{ i + 1 }}
+      </button>
     }
-    <button type="button" (click)="cambiarPagina(paginaActual + 1)" [disabled]="paginaActual === totalPaginas">Siguiente</button>
+    <button
+      type="button"
+      (click)="cambiarPagina(paginaActual + 1)"
+      [disabled]="paginaActual === totalPaginas"
+    >
+      Siguiente
+    </button>
   </nav>
 </main>

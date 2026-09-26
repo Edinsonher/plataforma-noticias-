@@ -1,15 +1,14 @@
 import { Component } from '@angular/core';
-import { Router, RouterLink } from '@angular/router'; // 1. Agregamos Router y RouterLink
+import { Router, RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-footer',
   standalone: true,
-  imports: [RouterLink], // 2. Lo declaramos aquí para que funcione en el HTML
+  imports: [RouterLink],
   templateUrl: './footer.html',
-  styleUrl: './footer.css'
+  styleUrl: './footer.css',
 })
 export class FooterComponent {
-  // 3. Agregamos el constructor para leer la página actual en el HTML
+  // El footer muestra sus columnas completas solamente en Home, como indica el mockup.
   constructor(public router: Router) {}
 }
-

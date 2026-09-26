@@ -7,6 +7,7 @@ import { ContactoComponent } from './pages/contacto/contacto.component';
 import { AdminComponent } from './pages/admin/admin.component';
 import { PoliticasComponent } from './pages/politicas/politicas.component';
 
+// Mapa central de navegacion entre las vistas publicas y administrativas.
 export const routes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full' },
   { path: 'home', component: HomeComponent },
@@ -16,5 +17,5 @@ export const routes: Routes = [
   { path: 'contacto', component: ContactoComponent },
   { path: 'admin', component: AdminComponent },
   { path: 'politicas/:tipo', component: PoliticasComponent },
-  { path: '**', redirectTo: 'home' }
+  { path: '**', redirectTo: 'home' },
 ];

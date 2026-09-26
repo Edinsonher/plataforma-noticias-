@@ -96,13 +96,13 @@ Resultado de la version final:
 
 ## 8. Correspondencia con los mockups
 
-| Mockup | Implementacion |
-| --- | --- |
-| Inicio | Banner, seis tarjetas, favoritos, header y footer |
-| Detalle | Imagen, contenido, favorito, contacto y relacionadas |
-| Noticias | Busqueda, filtros, tarjetas y paginacion |
+| Mockup   | Implementacion                                            |
+| -------- | --------------------------------------------------------- |
+| Inicio   | Banner, seis tarjetas, favoritos, header y footer         |
+| Detalle  | Imagen, contenido, favorito, contacto y relacionadas      |
+| Noticias | Busqueda, filtros, tarjetas y paginacion                  |
 | Contacto | Formulario validado, informacion, mapa y enlaces directos |
-| Admin | Publicacion y tabla con ID, categoria, fecha y acciones |
+| Admin    | Publicacion y tabla con ID, categoria, fecha y acciones   |
 
 **Anexos sugeridos:** incluir aqui capturas de cada vista y las imagenes de los mockups entregados.
 
@@ -118,10 +118,10 @@ Flash News cumple los requerimientos funcionales de una plataforma frontend de n
 
 ## Referencias
 
-Angular. (2026). *Angular documentation*. https://angular.dev/
+Angular. (2026). _Angular documentation_. https://angular.dev/
 
-Mozilla Developer Network. (2026). *Web technologies*. https://developer.mozilla.org/
+Mozilla Developer Network. (2026). _Web technologies_. https://developer.mozilla.org/
 
-OpenStreetMap Foundation. (2026). *OpenStreetMap*. https://www.openstreetmap.org/
+OpenStreetMap Foundation. (2026). _OpenStreetMap_. https://www.openstreetmap.org/
 
-Vitest. (2026). *Vitest documentation*. https://vitest.dev/
+Vitest. (2026). _Vitest documentation_. https://vitest.dev/

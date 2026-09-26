@@ -1,6 +1,7 @@
+// Verifica la inicializacion de la vista de favoritos.
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { provideRouter } from '@angular/router';
-import { FavoritosComponent,} from './favoritos.component';
+import { FavoritosComponent } from './favoritos.component';
 
 describe('FavoritosComponent', () => {
   let component: FavoritosComponent;

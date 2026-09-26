@@ -1,1 +1,4 @@
-:host{display:block}
+/* El layout principal del header vive en styles.css; este host mantiene su bloque. */
+:host {
+  display: block;
+}

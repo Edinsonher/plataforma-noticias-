@@ -1,1 +1,4 @@
-:host{display:block}
+/* El footer comparte las reglas globales y conserva un host de bloque. */
+:host {
+  display: block;
+}

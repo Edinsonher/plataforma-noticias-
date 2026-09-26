@@ -1,3 +1,4 @@
+// Prueba minima de creacion del Home y sus dependencias standalone.
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { HomeComponent } from './home.component';
 

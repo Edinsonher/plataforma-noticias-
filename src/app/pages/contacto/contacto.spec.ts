@@ -1,3 +1,4 @@
+// Verifica la creacion del formulario reactivo de contacto.
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { ContactoComponent } from './contacto.component';
 

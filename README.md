@@ -83,15 +83,15 @@ Estos tres marcadores deben reemplazarse antes de entregar el informe PDF.
 
 ## Rutas de la aplicacion
 
-| Ruta | Vista | Funcion principal |
-| --- | --- | --- |
-| `/home` | Inicio | Banner y seis noticias |
-| `/noticias` | Catalogo | Busqueda, filtros y paginacion |
-| `/detalle/:id` | Detalle | Lectura completa y favoritos |
-| `/favoritos` | Favoritos | Gestion de la seleccion personal |
-| `/contacto` | Contacto | Formulario, enlaces y mapa |
-| `/admin` | Administracion | Crear y eliminar noticias |
-| `/politicas/:tipo` | Politicas | Privacidad y terminos |
+| Ruta               | Vista          | Funcion principal                |
+| ------------------ | -------------- | -------------------------------- |
+| `/home`            | Inicio         | Banner y seis noticias           |
+| `/noticias`        | Catalogo       | Busqueda, filtros y paginacion   |
+| `/detalle/:id`     | Detalle        | Lectura completa y favoritos     |
+| `/favoritos`       | Favoritos      | Gestion de la seleccion personal |
+| `/contacto`        | Contacto       | Formulario, enlaces y mapa       |
+| `/admin`           | Administracion | Crear y eliminar noticias        |
+| `/politicas/:tipo` | Politicas      | Privacidad y terminos            |
 
 ## Estructura principal
 

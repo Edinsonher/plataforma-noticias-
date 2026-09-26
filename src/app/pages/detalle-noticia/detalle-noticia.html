@@ -1,3 +1,4 @@
+<!-- Detalle: lectura completa, favoritos y enlaces relacionados. -->
 @if (noticia) {
   <main class="detail-container">
     <a class="back-link" routerLink="/noticias">&lt;- Volver a noticias</a>
@@ -5,12 +6,20 @@
     <h1>{{ noticia.titulo }}</h1>
     <p class="detail-meta">Actualidad · Lectura de 3 minutos</p>
     <div class="detail-actions">
-      <button type="button" class="favorite-button" (click)="toggleFavorite()"><span [class.starred]="noticia.isFavorite">★</span> {{ noticia.isFavorite ? 'Guardada en favoritos' : 'Agregar a favoritos' }}</button>
+      <button type="button" class="favorite-button" (click)="toggleFavorite()">
+        <span [class.starred]="noticia.isFavorite">★</span>
+        {{ noticia.isFavorite ? 'Guardada en favoritos' : 'Agregar a favoritos' }}
+      </button>
       <a class="contact-link" routerLink="/contacto">Contactar a redaccion</a>
     </div>
-    <figure class="hero-image"><img [src]="noticia.imagen" [alt]="noticia.alt || noticia.titulo"></figure>
+    <figure class="hero-image">
+      <img [src]="noticia.imagen" [alt]="noticia.alt || noticia.titulo" />
+    </figure>
     <p class="image-caption">{{ noticia.resumen }}</p>
-    <article class="article-body"><p>{{ noticia.resumen }}</p><p>{{ noticia.contenido }}</p></article>
+    <article class="article-body">
+      <p>{{ noticia.resumen }}</p>
+      <p>{{ noticia.contenido }}</p>
+    </article>
     <section class="related-section">
       <h2>Noticias relacionadas</h2>
       <div class="related-grid">

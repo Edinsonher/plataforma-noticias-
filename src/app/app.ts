@@ -8,11 +8,10 @@ import { FooterComponent } from './shared/footer/footer';
   standalone: true,
   imports: [RouterOutlet, HeaderComponent, FooterComponent],
   templateUrl: './app.html',
-  styleUrl: './app.css'
+  styleUrl: './app.css',
 })
 export class App {
+  // Conservado para identificar la aplicacion en el componente raiz.
   protected readonly title = signal('plataforma-noticias');
   lastname: string = 'Edinson';
 }
-
-

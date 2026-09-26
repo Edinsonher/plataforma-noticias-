@@ -1,3 +1,4 @@
+// Verifica el header compartido y su buscador con router simulado.
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { provideRouter } from '@angular/router';
 import { HeaderComponent } from './header';

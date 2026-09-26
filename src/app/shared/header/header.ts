@@ -7,8 +7,7 @@ import { Router, RouterLink } from '@angular/router';
   standalone: true,
   imports: [FormsModule, RouterLink],
   templateUrl: './header.html',
-  styleUrl: './header.css'
-
+  styleUrl: './header.css',
 })
 export class HeaderComponent {
   termino = '';
@@ -16,6 +15,7 @@ export class HeaderComponent {
   constructor(private readonly router: Router) {}
 
   buscar(): void {
+    // El termino viaja en la URL para que el catalogo pueda filtrarlo y compartirlo.
     const termino = this.termino.trim();
     this.router.navigate(['/noticias'], { queryParams: termino ? { q: termino } : {} });
   }

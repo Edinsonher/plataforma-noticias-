@@ -1,37 +1,38 @@
+<!-- Home: banner destacado y las seis noticias que forman el primer catalogo. -->
 <main class="home-container">
   <!-- Sección del Banner Destacado -->
   @if (noticiaDestacada) {
-  <section class="featured-banner">
-    <div class="banner-content">
-      <h2>{{ noticiaDestacada.titulo }}</h2>
-      <p>{{ noticiaDestacada.resumen }}</p>
-      <a class="btn-read-more" [routerLink]="['/detalle', noticiaDestacada.id]">Leer noticia</a>
-    </div>
-  </section>
+    <section class="featured-banner">
+      <div class="banner-content">
+        <h2>{{ noticiaDestacada.titulo }}</h2>
+        <p>{{ noticiaDestacada.resumen }}</p>
+        <a class="btn-read-more" [routerLink]="['/detalle', noticiaDestacada.id]">Leer noticia</a>
+      </div>
+    </section>
   }
 
   <!-- Sección de Últimas Noticias -->
   <section class="latest-news">
     <h3>Últimas Noticias</h3>
     <div class="news-grid">
-
       @for (noticia of ultimasNoticias; track noticia.id) {
-      <article class="news-card" [ngClass]="getCardColorClass(noticia.categoria)">
-        <div class="card-image-wrap"><img [src]="noticia.imagen" [alt]="noticia.alt || noticia.titulo" loading="lazy"></div>
-        <div class="card-content-wrap">
-          <h4 class="card-category">{{ noticia.categoria }}</h4>
-          <h3 class="card-title">{{ noticia.titulo }}</h3>
-          <p class="card-desc">{{ noticia.resumen }}</p>
-          <div class="card-actions">
-            <a class="btn-link" [routerLink]="['/detalle', noticia.id]">Leer noticia</a>
-            <button class="btn-fav" type="button" (click)="toggleFavorite(noticia)">
-              <span [class.starred]="noticia.isFavorite">★</span>
-            </button>
+        <article class="news-card" [ngClass]="getCardColorClass(noticia.categoria)">
+          <div class="card-image-wrap">
+            <img [src]="noticia.imagen" [alt]="noticia.alt || noticia.titulo" loading="lazy" />
           </div>
-        </div>
-      </article>
+          <div class="card-content-wrap">
+            <h4 class="card-category">{{ noticia.categoria }}</h4>
+            <h3 class="card-title">{{ noticia.titulo }}</h3>
+            <p class="card-desc">{{ noticia.resumen }}</p>
+            <div class="card-actions">
+              <a class="btn-link" [routerLink]="['/detalle', noticia.id]">Leer noticia</a>
+              <button class="btn-fav" type="button" (click)="toggleFavorite(noticia)">
+                <span [class.starred]="noticia.isFavorite">★</span>
+              </button>
+            </div>
+          </div>
+        </article>
       }
-
     </div>
   </section>
 </main>
