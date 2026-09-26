@@ -131,7 +131,3 @@ npm run build
 ## Alcance y persistencia
 
 Es una aplicacion frontend sin backend. Las noticias iniciales se cargan desde JSON local. Los favoritos y cambios del CRUD se almacenan en el navegador del usuario; por eso no se comparten entre dispositivos ni navegadores.
-
-## Documentacion academica
-
-El contenido base del informe de entrega esta en [docs/INFORME-ENTREGA.md](docs/INFORME-ENTREGA.md). Debe complementarse con datos del estudiante, capturas, URL definitivas y referencias antes de exportarlo a PDF.
