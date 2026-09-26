@@ -2,16 +2,6 @@
 
 Aplicacion web responsiva tipo periodico desarrollada con Angular. Permite explorar noticias, consultar su detalle, guardar favoritos, contactar a la redaccion y gestionar publicaciones desde un panel administrativo local.
 
-## Estado de entrega
-
-La aplicacion esta implementada y validada con build de produccion y pruebas unitarias.
-
-- Repositorio GitHub: `PENDIENTE_URL_REPOSITORIO_GITHUB`
-- Aplicacion desplegada: `PENDIENTE_URL_DESPLIEGUE`
-- Video explicativo, maximo 3 minutos: `PENDIENTE_URL_VIDEO`
-
-Estos tres marcadores deben reemplazarse antes de entregar el informe PDF.
-
 ## Funcionalidades implementadas
 
 ### Home
@@ -137,24 +127,6 @@ Generar la version optimizada:
 ```bash
 npm run build
 ```
-
-Publicar el contenido de `dist/plataforma-noticias` en GitHub Pages, Netlify o Vercel. Configurar fallback a `index.html` para que las rutas de Angular funcionen al recargar.
-
-Antes de entregar:
-
-1. Reemplazar las tres URL pendientes en este README.
-2. Incluir capturas de Home, Noticias, Detalle, Contacto y Admin.
-3. Adjuntar los mockups recibidos.
-4. Agregar el enlace del video de maximo 3 minutos.
-5. Generar el informe PDF bajo normas APA.
-
-## Correspondencia con los mockups
-
-- **Inicio:** banner naranja, seis tarjetas, favoritos, navegacion y footer por columnas.
-- **Listado:** buscador, filtros, tarjetas, estrellas y paginacion.
-- **Detalle:** titular, autor/metadatos, imagen, lectura completa, favoritos y relacionadas.
-- **Contacto:** formulario, informacion directa, mapa y enlaces de correo/telefono.
-- **Admin:** formulario de publicacion y tabla de gestion con fecha y acciones.
 
 ## Alcance y persistencia
 
