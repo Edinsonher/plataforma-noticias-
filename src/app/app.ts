@@ -12,5 +12,7 @@ import { FooterComponent } from './shared/footer/footer';
 })
 export class App {
   protected readonly title = signal('plataforma-noticias');
+  lastname: string = 'Edinson';
 }
+
 

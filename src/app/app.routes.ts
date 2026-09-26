@@ -5,6 +5,7 @@ import { DetalleNoticiaComponent } from './pages/detalle-noticia/detalle-noticia
 import { FavoritosComponent } from './pages/favoritos/favoritos.component';
 import { ContactoComponent } from './pages/contacto/contacto.component';
 import { AdminComponent } from './pages/admin/admin.component';
+import { PoliticasComponent } from './pages/politicas/politicas.component';
 
 export const routes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full' },
@@ -14,5 +15,6 @@ export const routes: Routes = [
   { path: 'favoritos', component: FavoritosComponent },
   { path: 'contacto', component: ContactoComponent },
   { path: 'admin', component: AdminComponent },
+  { path: 'politicas/:tipo', component: PoliticasComponent },
   { path: '**', redirectTo: 'home' }
 ];

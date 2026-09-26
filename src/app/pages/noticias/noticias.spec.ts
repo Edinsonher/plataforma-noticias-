@@ -1,16 +1,27 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { Noticias } from './noticias.componente';
+import { ActivatedRoute, provideRouter } from '@angular/router';
+import { NoticiasComponent} from './noticias.component';
 
-describe('Noticias', () => {
-  let component: Noticias;
-  let fixture: ComponentFixture<Noticias>;
+describe('NoticiasComponent', () => {
+  let component: NoticiasComponent;
+  let fixture: ComponentFixture<NoticiasComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [Noticias],
+      imports: [NoticiasComponent],
+      providers: [
+        provideRouter([]),
+        {
+          provide: ActivatedRoute,
+          useValue: {
+            snapshot: { queryParamMap: { get: () => null } },
+            queryParamMap: { subscribe: (callback: (params: { get: () => null }) => void) => { callback({ get: () => null }); return { unsubscribe: () => undefined }; } }
+          }
+        }
+      ],
     }).compileComponents();
 
-    fixture = TestBed.createComponent(Noticias);
+    fixture = TestBed.createComponent(NoticiasComponent);
     component = fixture.componentInstance;
     await fixture.whenStable();
   });

@@ -1,60 +1,165 @@
-# PlataformaNoticias
+# Flash News
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 22.1.7.
+Aplicacion web responsiva tipo periodico desarrollada con Angular. Permite explorar noticias, consultar su detalle, guardar favoritos, contactar a la redaccion y gestionar publicaciones desde un panel administrativo local.
 
-## Development server
+## Estado de entrega
 
-To start a local development server, run:
+La aplicacion esta implementada y validada con build de produccion y pruebas unitarias.
 
-```bash
-ng serve
+- Repositorio GitHub: `PENDIENTE_URL_REPOSITORIO_GITHUB`
+- Aplicacion desplegada: `PENDIENTE_URL_DESPLIEGUE`
+- Video explicativo, maximo 3 minutos: `PENDIENTE_URL_VIDEO`
+
+Estos tres marcadores deben reemplazarse antes de entregar el informe PDF.
+
+## Funcionalidades implementadas
+
+### Home
+
+- Banner con la noticia destacada.
+- Seis tarjetas de noticias con imagen, categoria, resumen y enlace a detalle.
+- Accion para guardar o quitar favoritos.
+- Header, navegacion, buscador y footer.
+
+### Noticias
+
+- Catalogo dinamico desde `public/data/noticias.json`.
+- Busqueda por titulo o resumen desde el buscador del header o el buscador interno.
+- Filtros por categoria.
+- Paginacion.
+- Acceso a detalle y favoritos desde cada tarjeta.
+
+### Detalle de noticia
+
+- Categoria, titular, metadatos, imagen representativa y resumen.
+- Lectura completa del contenido.
+- Noticias relacionadas.
+- Accion para agregar o quitar favoritos.
+- Enlace para contactar a la redaccion.
+
+### Favoritos
+
+- Persistencia con `localStorage` usando la clave `favoritos_app`.
+- Listado personalizado.
+- Acceso al detalle.
+- Eliminacion individual de favoritos.
+- Estado vacio con acceso al catalogo.
+
+### Contacto
+
+- Formulario reactivo con validacion de nombre, correo, asunto y mensaje.
+- Mensajes de error para campos obligatorios, correo invalido y longitudes minimas.
+- Confirmacion de envio exitoso.
+- Correo accionable: `mailto:redaccion@flashnews.com`.
+- Telefono accionable: `tel:+5710000000`.
+- Mapa interactivo de OpenStreetMap y enlace para abrirlo en una nueva pestaña.
+
+### Administracion
+
+- Formulario para crear noticias.
+- Validacion de titulo, categoria, resumen y contenido.
+- Fecha automatica para publicaciones nuevas.
+- Tabla de noticias con ID, titulo, categoria, fecha y acciones.
+- Eliminacion de noticias desde el gestor local.
+- Persistencia del CRUD con `localStorage` usando la clave `noticias_app_data_v2`.
+
+### Politicas
+
+- `/politicas/privacidad`: uso de datos del formulario y almacenamiento local.
+- `/politicas/terminos`: condiciones basicas de uso del portal.
+
+## Tecnologias
+
+- Angular 22.
+- TypeScript.
+- HTML semantico.
+- CSS responsive con variables y media queries.
+- Angular Router.
+- Reactive Forms.
+- JSON local.
+- `localStorage`.
+- Vitest mediante Angular CLI.
+- OpenStreetMap para el mapa embebido.
+
+## Rutas de la aplicacion
+
+| Ruta | Vista | Funcion principal |
+| --- | --- | --- |
+| `/home` | Inicio | Banner y seis noticias |
+| `/noticias` | Catalogo | Busqueda, filtros y paginacion |
+| `/detalle/:id` | Detalle | Lectura completa y favoritos |
+| `/favoritos` | Favoritos | Gestion de la seleccion personal |
+| `/contacto` | Contacto | Formulario, enlaces y mapa |
+| `/admin` | Administracion | Crear y eliminar noticias |
+| `/politicas/:tipo` | Politicas | Privacidad y terminos |
+
+## Estructura principal
+
+```text
+public/
+  data/noticias.json       Fuente inicial de noticias
+  assets/images/           Imagenes del portal
+  mockups/                 Referencias visuales recibidas
+src/app/
+  models/                  Interfaces de dominio
+  services/                Datos, favoritos y CRUD local
+  pages/                   Home, catalogo, detalle, favoritos, contacto, admin y politicas
+  shared/                  Header y footer
+src/styles.css             Sistema visual y responsive global
 ```
 
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
+## Ejecucion local
 
-## Code scaffolding
-
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
+Requisitos: Node.js y npm.
 
 ```bash
-ng generate component component-name
+npm install
+npm start
 ```
 
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
+Abrir `http://localhost:4200/`.
+
+## Validacion tecnica
 
 ```bash
-ng generate --help
+npm run build
+npm test -- --watch=false
 ```
 
-## Building
+Resultado actual: build de produccion exitoso y 10 pruebas exitosas en 9 archivos.
 
-To build the project run:
+El build se genera en `dist/plataforma-noticias`.
+
+## Despliegue
+
+Generar la version optimizada:
 
 ```bash
-ng build
+npm run build
 ```
 
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
+Publicar el contenido de `dist/plataforma-noticias` en GitHub Pages, Netlify o Vercel. Configurar fallback a `index.html` para que las rutas de Angular funcionen al recargar.
 
-## Running unit tests
+Antes de entregar:
 
-To execute unit tests with the [Vitest](https://vitest.dev/) test runner, use the following command:
+1. Reemplazar las tres URL pendientes en este README.
+2. Incluir capturas de Home, Noticias, Detalle, Contacto y Admin.
+3. Adjuntar los mockups recibidos.
+4. Agregar el enlace del video de maximo 3 minutos.
+5. Generar el informe PDF bajo normas APA.
 
-```bash
-ng test
-```
+## Correspondencia con los mockups
 
-## Running end-to-end tests
+- **Inicio:** banner naranja, seis tarjetas, favoritos, navegacion y footer por columnas.
+- **Listado:** buscador, filtros, tarjetas, estrellas y paginacion.
+- **Detalle:** titular, autor/metadatos, imagen, lectura completa, favoritos y relacionadas.
+- **Contacto:** formulario, informacion directa, mapa y enlaces de correo/telefono.
+- **Admin:** formulario de publicacion y tabla de gestion con fecha y acciones.
 
-For end-to-end (e2e) testing, run:
+## Alcance y persistencia
 
-```bash
-ng e2e
-```
+Es una aplicacion frontend sin backend. Las noticias iniciales se cargan desde JSON local. Los favoritos y cambios del CRUD se almacenan en el navegador del usuario; por eso no se comparten entre dispositivos ni navegadores.
 
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
+## Documentacion academica
 
-## Additional Resources
-
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
-# plataforma-noticias-
+El contenido base del informe de entrega esta en [docs/INFORME-ENTREGA.md](docs/INFORME-ENTREGA.md). Debe complementarse con datos del estudiante, capturas, URL definitivas y referencias antes de exportarlo a PDF.

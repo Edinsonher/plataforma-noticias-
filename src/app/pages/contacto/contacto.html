@@ -1,1 +1,25 @@
-
+<main class="contact-container">
+  <header class="contact-header"><p class="eyebrow">Estamos para escucharte</p><h1>Contacto y atencion al lector</h1><p>Escribenos tu sugerencia, reclamo o reporte ciudadano.</p></header>
+  <div class="contact-layout">
+    <section class="contact-form-card">
+      <h2>Envia un mensaje</h2>
+      <form [formGroup]="contactoForm" (ngSubmit)="enviar()" novalidate>
+        <label for="nombre">Nombre completo *</label>
+        <input id="nombre" type="text" formControlName="nombre" placeholder="Tu nombre">
+        @if (campoInvalido('nombre')) { <small>Ingresa al menos 3 caracteres.</small> }
+        <label for="email">Correo electronico *</label>
+        <input id="email" type="email" formControlName="email" placeholder="usuario@correo.com">
+        @if (campoInvalido('email')) { <small>Ingresa un correo valido.</small> }
+        <label for="asunto">Asunto *</label>
+        <input id="asunto" type="text" formControlName="asunto" placeholder="Motivo del mensaje">
+        @if (campoInvalido('asunto')) { <small>El asunto es obligatorio.</small> }
+        <label for="mensaje">Mensaje *</label>
+        <textarea id="mensaje" rows="5" formControlName="mensaje" placeholder="Escribe tu mensaje aqui"></textarea>
+        @if (campoInvalido('mensaje')) { <small>El mensaje debe tener al menos 10 caracteres.</small> }
+        <button type="submit" class="btn-primary">Enviar mensaje</button>
+        @if (enviado) { <p class="success-message" role="status">Tu mensaje fue enviado correctamente.</p> }
+      </form>
+    </section>
+      <aside class="contact-info-card"><h2>Informacion directa</h2><p><strong>Correo</strong><br><a class="contact-direct-link" href="mailto:redaccion&#64;flashnews.com">redaccion&#64;flashnews.com</a></p><p><strong>Telefono</strong><br><a class="contact-direct-link" href="tel:+5710000000">+57 (1) 000 0000</a></p><p><strong>Direccion</strong><br>Av. Principal #123, Bogota</p><div class="map-container"><iframe title="Ubicacion de Flash News en Bogota" src="https://www.openstreetmap.org/export/embed.html?bbox=-74.095%2C4.600%2C-74.075%2C4.620&amp;layer=mapnik&amp;marker=4.6097%2C-74.0817" loading="lazy"></iframe></div><a class="map-link" href="https://www.openstreetmap.org/?mlat=4.6097&amp;mlon=-74.0817#map=16/4.6097/-74.0817" target="_blank" rel="noopener">Abrir mapa en una nueva pestaña</a></aside>
+  </div>
+</main>

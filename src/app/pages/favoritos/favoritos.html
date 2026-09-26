@@ -1,1 +1,17 @@
-
+<main class="favorites-container">
+  <header class="favorites-header">
+    <p class="eyebrow">Tu seleccion personal</p>
+    <h1>Mis favoritos</h1>
+    <p>Guarda las historias que quieres volver a leer.</p>
+  </header>
+  <section class="news-grid">
+    @for (noticia of misFavoritos; track noticia.id) {
+      <article class="news-card">
+        <img [src]="noticia.imagen" [alt]="noticia.alt || noticia.titulo" loading="lazy">
+        <div class="card-content"><span class="badge">{{ noticia.categoria }}</span><h2>{{ noticia.titulo }}</h2><p>{{ noticia.resumen }}</p><div class="card-actions"><button type="button" class="btn-link" (click)="verDetalle(noticia.id)">Leer noticia</button><button type="button" class="btn-remove-fav" (click)="eliminarDeFavoritos(noticia.id)">Quitar</button></div></div>
+      </article>
+    } @empty {
+      <div class="empty-favorites"><h2>Aun no tienes favoritos</h2><p>Explora las noticias y pulsa la estrella para crear tu seleccion.</p><a routerLink="/noticias" class="btn-primary">Explorar noticias</a></div>
+    }
+  </section>
+</main>

@@ -1,1 +1,16 @@
-
+<main class="admin-container">
+  <header class="admin-header"><p class="eyebrow">Herramienta editorial</p><h1>Gestion de noticias</h1><p>Publica y administra el contenido del portal.</p></header>
+  <section class="crud-form-section">
+    <h2>Publicar una noticia</h2>
+    <form [formGroup]="noticiaForm" (ngSubmit)="publicar()" novalidate>
+      <label for="news-title">Titulo *</label><input id="news-title" type="text" formControlName="titulo" placeholder="Escribe el titular">
+      <label for="news-category">Categoria *</label><select id="news-category" formControlName="categoria"><option value="">Selecciona una categoria</option>@for (categoria of categorias; track categoria) {<option [value]="categoria">{{ categoria }}</option>}</select>
+      <label for="news-image">Imagen URL</label><input id="news-image" type="text" formControlName="imagen" placeholder="assets/images/imagen.jpg">
+      <label for="news-summary">Resumen *</label><textarea id="news-summary" rows="3" formControlName="resumen" placeholder="Descripcion breve para la tarjeta"></textarea>
+      <label for="news-content">Contenido *</label><textarea id="news-content" rows="6" formControlName="contenido" placeholder="Cuerpo completo de la noticia"></textarea>
+      <button type="submit" class="btn-primary">+ Guardar y publicar</button>
+      @if (guardada) { <p class="success-message" role="status">Noticia publicada correctamente.</p> }
+    </form>
+  </section>
+  <section class="management-table-section"><h2>Noticias en el sistema</h2><p class="table-caption">Listado de publicaciones y funciones de gestion local.</p><div class="table-wrapper"><table><thead><tr><th>ID</th><th>Titulo</th><th>Categoria</th><th>Fecha</th><th>Acciones</th></tr></thead><tbody>@for (noticia of noticias; track noticia.id) {<tr><td>{{ noticia.id }}</td><td>{{ noticia.titulo }}</td><td>{{ noticia.categoria }}</td><td>{{ noticia.fecha }}</td><td class="action-cell"><button type="button" class="btn-delete" (click)="eliminar(noticia.id)" [attr.aria-label]="'Eliminar ' + noticia.titulo">Eliminar</button></td></tr>}</tbody></table></div></section>
+</main>

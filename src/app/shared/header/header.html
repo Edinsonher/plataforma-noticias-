@@ -19,8 +19,8 @@
     </nav>
     
     <!--Botón de búsqueda de noticias-->
-    <div class="search-box">
-        <input type="text" placeholder="Buscar noticias..." />
-        <button type="button">&#128269;</button>
-    </div>
+    <form class="search-box" (ngSubmit)="buscar()">
+        <input name="termino" [(ngModel)]="termino" type="search" placeholder="Buscar noticias..." aria-label="Buscar noticias" />
+        <button type="submit" aria-label="Ejecutar busqueda"></button>
+    </form>
 </header>

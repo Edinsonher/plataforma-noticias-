@@ -1,33 +1,88 @@
-import { Component, OnInit } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
 import { CommonModule } from '@angular/common';
+import { Component, OnInit } from '@angular/core';
+import { FormsModule } from '@angular/forms';
+import { ActivatedRoute, Router } from '@angular/router';
+import { Noticia } from '../../models/noticia.model';
+import { NoticiasService } from '../../services/noticias.service';
 
 @Component({
   selector: 'app-noticias',
   standalone: true,
-  imports: [CommonModule],
-  styleUrl: './noticias.css',    
-  templateUrl: './noticias.html'  
+  imports: [CommonModule, FormsModule],
+  styleUrl: './noticias.css',
+  templateUrl: './noticias.html'
 })
-
 export class NoticiasComponent implements OnInit {
-  // Arreglo donde se guardarán las noticias cargadas del JSON
-  listaNoticias: any[] = [];
+  listaNoticias: Noticia[] = [];
+  noticiasFiltradas: Noticia[] = [];
+  busqueda = '';
+  categoriaActiva = 'Todas';
+  paginaActual = 1;
+  readonly noticiasPorPagina = 6;
+  categorias: string[] = [];
 
-  // Inyectamos el HttpClient en el constructor
-  constructor(private http: HttpClient) {}
+  constructor(private readonly noticiasService: NoticiasService, private readonly router: Router, private readonly route: ActivatedRoute) {}
 
-  ngOnInit(): void {
-    // Leemos el archivo JSON que creamos en la carpeta public
-    this.http.get<any[]>('noticias.json').subscribe({
-      next: (data) => {
-        this.listaNoticias = data;
-        console.log('Noticias cargadas con éxito:', this.listaNoticias);
-      },
-      error: (err) => {
-        console.error('Error al cargar el archivo JSON:', err);
-      }
+  async ngOnInit(): Promise<void> {
+    this.route.queryParamMap.subscribe((params) => {
+      this.busqueda = params.get('q') || '';
+      this.aplicarFiltros();
     });
+    const favoritosIds = new Set(this.noticiasService.getFavorites().map((noticia) => noticia.id));
+    this.listaNoticias = (await this.noticiasService.getNoticias()).map((noticia) => ({
+      ...noticia,
+      isFavorite: favoritosIds.has(noticia.id)
+    }));
+    this.categorias = [...new Set(this.listaNoticias.map((noticia) => noticia.categoria))];
+    this.aplicarFiltros();
+  }
+
+  get totalPaginas(): number {
+    return Math.max(1, Math.ceil(this.noticiasFiltradas.length / this.noticiasPorPagina));
+  }
+
+  get noticiasVisibles(): Noticia[] {
+    const inicio = (this.paginaActual - 1) * this.noticiasPorPagina;
+    return this.noticiasFiltradas.slice(inicio, inicio + this.noticiasPorPagina);
+  }
+
+  seleccionarCategoria(categoria: string): void {
+    this.categoriaActiva = categoria;
+    this.paginaActual = 1;
+    this.aplicarFiltros();
+  }
+
+  aplicarFiltros(): void {
+    const termino = this.busqueda.trim().toLowerCase();
+    this.noticiasFiltradas = this.listaNoticias.filter((noticia) => {
+      const coincideCategoria = this.categoriaActiva === 'Todas' || noticia.categoria === this.categoriaActiva;
+      const coincideTexto = `${noticia.titulo} ${noticia.resumen}`.toLowerCase().includes(termino);
+      return coincideCategoria && coincideTexto;
+    });
+    this.paginaActual = Math.min(this.paginaActual, this.totalPaginas);
+  }
+
+  cambiarPagina(pagina: number): void {
+    this.paginaActual = Math.min(Math.max(pagina, 1), this.totalPaginas);
+  }
+
+  verDetalle(id: number): void {
+    this.router.navigate(['/detalle', id]);
+  }
+
+  toggleFavorite(noticia: Noticia): void {
+    noticia.isFavorite = this.noticiasService.toggleFavorite(noticia);
+  }
+
+  getCardColorClass(categoria: string): string {
+    const colors: Record<string, string> = {
+      Ciberseguridad: 'card-red',
+      'Seguridad Nacional': 'card-light-green',
+      'Desarrollo de Software': 'card-purple',
+      Tecnologia: 'card-blue',
+      'Inteligencia Artificial': 'card-orange',
+      Deportes: 'card-green'
+    };
+    return colors[categoria] || 'card-default';
   }
 }
-

@@ -1,12 +1,22 @@
 import { Component } from '@angular/core';
-import { RouterLink } from '@angular/router'; // 1. Agregamos la importación
+import { FormsModule } from '@angular/forms';
+import { Router, RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-header',
   standalone: true,
-  imports: [RouterLink], // 2. Lo declaramos aquí para que funcione en el HTML
+  imports: [FormsModule, RouterLink],
   templateUrl: './header.html',
   styleUrl: './header.css'
 
 })
-export class HeaderComponent {}
+export class HeaderComponent {
+  termino = '';
+
+  constructor(private readonly router: Router) {}
+
+  buscar(): void {
+    const termino = this.termino.trim();
+    this.router.navigate(['/noticias'], { queryParams: termino ? { q: termino } : {} });
+  }
+}

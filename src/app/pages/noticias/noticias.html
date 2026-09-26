@@ -1,57 +1,46 @@
 <main class="news-section-container">
-  <!-- Encabezado de la Sección -->
   <header class="section-header">
-    <h2>Sección Tecnología</h2>
-    <p>Explora las últimas noticias y tendencias tecnológicas.</p>
+    <p class="eyebrow">Edicion digital</p>
+    <h2>Explora las noticias</h2>
+    <p>Encuentra historias, analisis y tendencias de actualidad.</p>
   </header>
-  <hr class="divider">
 
-  <!-- Herramientas: Buscador y Filtros -->
-  <section class="search-filter-controls">
-    <div class="internal-search">
-      <label for="section-search">Buscar noticia en esta sección</label>
-      <div class="search-input-wrapper">
-        <input type="text" id="section-search" placeholder="Escribe para buscar...">
-      </div>
-    </div>
-
+  <section class="search-filter-controls" aria-label="Filtros de noticias">
+    <label for="section-search">Buscar noticia</label>
+    <input id="section-search" type="search" [(ngModel)]="busqueda" (ngModelChange)="aplicarFiltros()" placeholder="Titulo o palabra clave">
     <div class="filter-tags">
-      <span>Filtros:</span>
-      <ul class="tags-list">
-        <li><button type="button" class="tag-btn active">Todos</button></li>
-        <li><button type="button" class="tag-btn">IA</button></li>
-        <li><button type="button" class="tag-btn">Gadgets</button></li>
-        <li><button type="button" class="tag-btn">Software</button></li>
-        <li><button type="button" class="tag-btn">Ciberseguridad</button></li>
-      </ul>
+      <span>Filtrar por categoria</span>
+      <button type="button" [class.active]="categoriaActiva === 'Todas'" (click)="seleccionarCategoria('Todas')">Todas</button>
+      @for (categoria of categorias; track categoria) {
+        <button type="button" [class.active]="categoriaActiva === categoria" (click)="seleccionarCategoria(categoria)">{{ categoria }}</button>
+      }
     </div>
   </section>
 
-  <!-- Rejilla de Noticias de la Sección Dinámica -->
-  <section class="news-grid">
-    @for (noticia of listaNoticias; track noticia.id) {
-      <article class="news-card">
-        <img [src]="noticia.imagen" [alt]="noticia.titulo" class="card-img">
+  <section class="news-grid" aria-live="polite">
+    @for (noticia of noticiasVisibles; track noticia.id) {
+      <article class="news-card" [ngClass]="getCardColorClass(noticia.categoria)">
+        <div class="card-image-wrap"><img [src]="noticia.imagen" [alt]="noticia.alt || noticia.titulo" loading="lazy"></div>
         <div class="card-content">
-          <h4>{{ noticia.titulo }}</h4>
-          <p>{{ noticia.descripcion }}</p>
+          <span class="card-category">{{ noticia.categoria }}</span>
+          <h3>{{ noticia.titulo }}</h3>
+          <p>{{ noticia.resumen }}</p>
+          <div class="card-actions">
+            <button type="button" class="btn-link" (click)="verDetalle(noticia.id)">Leer noticia</button>
+            <button type="button" class="btn-fav" [attr.aria-label]="noticia.isFavorite ? 'Quitar de favoritos' : 'Agregar a favoritos'" (click)="toggleFavorite(noticia)"><span [class.starred]="noticia.isFavorite">★</span></button>
+          </div>
         </div>
       </article>
     } @empty {
-      <p>Cargando noticias de tecnología...</p>
+      <p class="empty-state">No encontramos noticias con esos criterios.</p>
     }
   </section>
-  <hr class="divider">
 
-  <!-- Paginación Inferior -->
-  <nav class="pagination-container" aria-label="Paginación de noticias">
-    <button type="button" class="pag-btn prev">Anterior</button>
-    <ul class="page-numbers">
-      <li><button type="button" class="page-num active">1</button></li>
-      <li><button type="button" class="page-num">2</button></li>
-      <li><button type="button" class="page-num">3</button></li>
-      <li><button type="button" class="page-num">4</button></li>
-    </ul>
-    <button type="button" class="pag-btn next">Siguiente</button>
+  <nav class="pagination-container" aria-label="Paginacion">
+    <button type="button" (click)="cambiarPagina(paginaActual - 1)" [disabled]="paginaActual === 1">Anterior</button>
+    @for (pagina of [].constructor(totalPaginas); let i = $index; track i) {
+      <button type="button" [class.active]="paginaActual === i + 1" (click)="cambiarPagina(i + 1)">{{ i + 1 }}</button>
+    }
+    <button type="button" (click)="cambiarPagina(paginaActual + 1)" [disabled]="paginaActual === totalPaginas">Siguiente</button>
   </nav>
 </main>
