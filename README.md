@@ -122,10 +122,16 @@ El build se genera en `dist/plataforma-noticias`.
 
 ## Despliegue
 
-Generar la version optimizada:
+El workflow de GitHub Actions publica automaticamente en GitHub Pages cada vez que se actualiza la rama `main`. La URL del sitio es:
+
+`https://edinsonher.github.io/plataforma-noticias-/`
+
+En GitHub, configurar **Settings > Pages > Build and deployment > Source** como **GitHub Actions**. El workflow compila la app con la ruta base del repositorio y genera un `404.html` para conservar la navegacion al recargar rutas internas.
+
+Para generar localmente una version compatible con Pages:
 
 ```bash
-npm run build
+npm run build -- --base-href /plataforma-noticias-/
 ```
 
 ## Alcance y persistencia

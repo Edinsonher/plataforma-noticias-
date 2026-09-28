@@ -10,7 +10,7 @@
   align-items: end;
   min-height: 270px;
   padding: 42px;
-  background: #ff9e45 url('/assets/images/news.jpg') center/cover;
+  background: #ff9e45 url('../../../../public/assets/images/news.jpg') center/cover;
   border: 1px solid #e78330;
   position: relative;
   overflow: hidden;
