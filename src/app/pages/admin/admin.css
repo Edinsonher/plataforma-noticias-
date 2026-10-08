@@ -26,8 +26,17 @@
 }
 .crud-form-section textarea,
 .crud-form-section .btn-primary,
-.crud-form-section .success-message {
+.crud-form-section .success-message,
+.crud-form-section .validation-message {
   grid-column: 1/-1;
+}
+.validation-message {
+  color: #a13d2d;
+  font-size: 0.875rem;
+}
+.btn-primary:disabled {
+  cursor: wait;
+  opacity: 0.7;
 }
 .crud-form-section input,
 .crud-form-section textarea,
@@ -56,6 +65,10 @@ td {
   text-align: left;
   padding: 13px 10px;
   border-bottom: 1px solid var(--line);
+}
+.empty-state {
+  text-align: center;
+  color: var(--muted);
 }
 th {
   font-size: 0.78rem;

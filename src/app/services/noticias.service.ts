@@ -1,4 +1,5 @@
-import { Injectable } from '@angular/core';
+import { DOCUMENT } from '@angular/common';
+import { Inject, Injectable } from '@angular/core';
 import { Noticia } from '../models/noticia.model';
 
 @Injectable({
@@ -10,7 +11,7 @@ export class NoticiasService {
   private readonly STORAGE_KEY = 'noticias_app_data_v2';
   private readonly FAVORITES_KEY = 'favoritos_app';
 
-  constructor() {}
+  constructor(@Inject(DOCUMENT) private readonly document: Document) {}
 
   /**
    * Obtiene la lista de noticias.
@@ -24,7 +25,11 @@ export class NoticiasService {
     }
 
     try {
-      const response = await fetch(this.JSON_URL);
+      const url = new URL(this.JSON_URL, this.document.baseURI);
+      const response = await fetch(url);
+      if (!response.ok) {
+        throw new Error(`La solicitud de noticias fallo con estado ${response.status}.`);
+      }
       const data: Noticia[] = await response.json();
       this.saveToLocal(data);
       return data;

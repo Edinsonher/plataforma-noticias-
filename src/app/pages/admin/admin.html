@@ -15,6 +15,15 @@
         formControlName="titulo"
         placeholder="Escribe el titular"
       />
+      @if (noticiaForm.controls.titulo.touched && noticiaForm.controls.titulo.invalid) {
+        <small class="validation-message" role="alert">
+          @if (noticiaForm.controls.titulo.hasError('required')) {
+            El titulo es obligatorio.
+          } @else {
+            El titulo debe tener al menos 8 caracteres.
+          }
+        </small>
+      }
       <label for="news-category">Categoria *</label
       ><select id="news-category" formControlName="categoria">
         <option value="">Selecciona una categoria</option>
@@ -22,6 +31,9 @@
           <option [value]="categoria">{{ categoria }}</option>
         }
       </select>
+      @if (noticiaForm.controls.categoria.touched && noticiaForm.controls.categoria.invalid) {
+        <small class="validation-message" role="alert">Selecciona una categoria.</small>
+      }
       <label for="news-image">Imagen URL</label
       ><input
         id="news-image"
@@ -36,6 +48,15 @@
         formControlName="resumen"
         placeholder="Descripcion breve para la tarjeta"
       ></textarea>
+      @if (noticiaForm.controls.resumen.touched && noticiaForm.controls.resumen.invalid) {
+        <small class="validation-message" role="alert">
+          @if (noticiaForm.controls.resumen.hasError('required')) {
+            El resumen es obligatorio.
+          } @else {
+            El resumen debe tener al menos 20 caracteres.
+          }
+        </small>
+      }
       <label for="news-content">Contenido *</label
       ><textarea
         id="news-content"
@@ -43,7 +64,18 @@
         formControlName="contenido"
         placeholder="Cuerpo completo de la noticia"
       ></textarea>
-      <button type="submit" class="btn-primary">+ Guardar y publicar</button>
+      @if (noticiaForm.controls.contenido.touched && noticiaForm.controls.contenido.invalid) {
+        <small class="validation-message" role="alert">
+          @if (noticiaForm.controls.contenido.hasError('required')) {
+            El contenido es obligatorio.
+          } @else {
+            El contenido debe tener al menos 40 caracteres.
+          }
+        </small>
+      }
+      <button type="submit" class="btn-primary" [disabled]="cargandoNoticias">
+        {{ cargandoNoticias ? 'Cargando noticias...' : '+ Guardar y publicar' }}
+      </button>
       @if (guardada) {
         <p class="success-message" role="status">Noticia publicada correctamente.</p>
       }
@@ -64,23 +96,35 @@
           </tr>
         </thead>
         <tbody>
-          @for (noticia of noticias; track noticia.id) {
+          @if (cargandoNoticias) {
             <tr>
-              <td>{{ noticia.id }}</td>
-              <td>{{ noticia.titulo }}</td>
-              <td>{{ noticia.categoria }}</td>
-              <td>{{ noticia.fecha }}</td>
-              <td class="action-cell">
-                <button
-                  type="button"
-                  class="btn-delete"
-                  (click)="eliminar(noticia.id)"
-                  [attr.aria-label]="'Eliminar ' + noticia.titulo"
-                >
-                  Eliminar
-                </button>
+              <td colspan="5" class="empty-state" role="status">Cargando noticias...</td>
+            </tr>
+          } @else if (noticias.length === 0) {
+            <tr>
+              <td colspan="5" class="empty-state" role="status">
+                No hay noticias cargadas para administrar.
               </td>
             </tr>
+          } @else {
+            @for (noticia of noticias; track noticia.id) {
+              <tr>
+                <td>{{ noticia.id }}</td>
+                <td>{{ noticia.titulo }}</td>
+                <td>{{ noticia.categoria }}</td>
+                <td>{{ noticia.fecha }}</td>
+                <td class="action-cell">
+                  <button
+                    type="button"
+                    class="btn-delete"
+                    (click)="eliminar(noticia.id)"
+                    [attr.aria-label]="'Eliminar ' + noticia.titulo"
+                  >
+                    Eliminar
+                  </button>
+                </td>
+              </tr>
+            }
           }
         </tbody>
       </table>

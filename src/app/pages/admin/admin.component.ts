@@ -15,6 +15,7 @@ export class AdminComponent implements OnInit {
   noticias: Noticia[] = [];
   readonly fechaActual = new Intl.DateTimeFormat('es-CO').format(new Date());
   guardada = false;
+  cargandoNoticias = true;
   readonly categorias = [
     'Tecnologia',
     'Nacional',
@@ -40,18 +41,25 @@ export class AdminComponent implements OnInit {
 
   async ngOnInit(): Promise<void> {
     // Se carga primero el almacenamiento local para mostrar la tabla sin esperar al fetch.
-    const almacenadas = this.noticiasService.getStoredNoticias();
-    const noticias =
-      almacenadas.length > 0 ? almacenadas : await this.noticiasService.getNoticias();
-    this.noticias = noticias.map((noticia) => ({
-      ...noticia,
-      fecha: noticia.fecha || this.fechaActual,
-    }));
+    try {
+      const almacenadas = this.noticiasService.getStoredNoticias();
+      const noticias =
+        almacenadas.length > 0 ? almacenadas : await this.noticiasService.getNoticias();
+      this.noticias = noticias.map((noticia) => ({
+        ...noticia,
+        fecha: noticia.fecha || this.fechaActual,
+      }));
+    } finally {
+      this.cargandoNoticias = false;
+    }
   }
 
   publicar(): void {
     // Las validaciones evitan guardar publicaciones incompletas.
     this.guardada = false;
+    if (this.cargandoNoticias) {
+      return;
+    }
     if (this.noticiaForm.invalid) {
       this.noticiaForm.markAllAsTouched();
       return;
