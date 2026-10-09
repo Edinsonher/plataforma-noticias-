@@ -31,7 +31,7 @@ export class HomeComponent implements OnInit {
   }
 
   private mostrarNoticias(todasLasNoticias: Noticia[]): void {
-    // La noticia destacada ocupa el banner; las otras seis forman el catalogo del Home.
+    // La noticia destacada ocupa el banner; si no existe la categoria, se usa la primera noticia del conjunto.
     const favoritos = this.noticiasService.getFavorites();
 
     const noticiasMapeadas = todasLasNoticias.map((n) => ({
@@ -39,11 +39,11 @@ export class HomeComponent implements OnInit {
       isFavorite: favoritos.some((fav: Noticia) => fav.id === n.id),
     }));
 
-    // Filtrar la noticia destacada
-    this.noticiaDestacada = noticiasMapeadas.find((n) => n.categoria === 'Destacada') || null;
+    this.noticiaDestacada =
+      noticiasMapeadas.find((n) => n.categoria === 'Destacada') ?? noticiasMapeadas[0] ?? null;
 
-    // Las demás van a últimas noticias
-    this.ultimasNoticias = noticiasMapeadas.filter((n) => n.categoria !== 'Destacada');
+    const idDestacado = this.noticiaDestacada?.id;
+    this.ultimasNoticias = noticiasMapeadas.filter((n) => n.id !== idDestacado);
   }
 
   verMas(id: number) {
