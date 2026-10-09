@@ -28,9 +28,11 @@ export class NoticiasComponent implements OnInit {
   ) {}
 
   async ngOnInit(): Promise<void> {
-    // El buscador global envia el termino como query param; la suscripcion permite reaccionar sin recrear la vista.
+    // El buscador global envia el termino y la categoria como query params; la suscripcion permite reaccionar sin recrear la vista.
     this.route.queryParamMap.subscribe((params) => {
       this.busqueda = params.get('q') || '';
+      const categoriaParam = params.get('categoria');
+      this.categoriaActiva = categoriaParam && categoriaParam !== 'Todas' ? categoriaParam : 'Todas';
       this.aplicarFiltros();
     });
     const favoritosIds = new Set(this.noticiasService.getFavorites().map((noticia) => noticia.id));
@@ -39,6 +41,9 @@ export class NoticiasComponent implements OnInit {
       isFavorite: favoritosIds.has(noticia.id),
     }));
     this.categorias = [...new Set(this.listaNoticias.map((noticia) => noticia.categoria))];
+    if (this.categoriaActiva !== 'Todas' && !this.categorias.includes(this.categoriaActiva)) {
+      this.categoriaActiva = 'Todas';
+    }
     this.aplicarFiltros();
   }
 
@@ -55,6 +60,17 @@ export class NoticiasComponent implements OnInit {
   seleccionarCategoria(categoria: string): void {
     this.categoriaActiva = categoria;
     this.paginaActual = 1;
+
+    const queryParams: Record<string, string> = {};
+    const valorBusqueda = this.route.snapshot.queryParamMap.get('q');
+    if (valorBusqueda) {
+      queryParams['q'] = valorBusqueda;
+    }
+    if (categoria !== 'Todas') {
+      queryParams['categoria'] = categoria;
+    }
+
+    this.router.navigate(['/noticias'], { queryParams });
     this.aplicarFiltros();
   }
 
